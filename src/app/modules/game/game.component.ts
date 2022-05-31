@@ -28,12 +28,12 @@ export class GameComponent{
 
   submitAnswer(){
     if(this.currentLine==0){
-      if(this.answers[0]=="x"&&this.answers[1]==this.problems[1]&&this.operatorAnswer=='-'&&this.answers[2]==this.problems[0]){
+      if((this.answers[0]=="x"||this.answers[0]=="X")&&this.answers[1]==this.problems[1]&&this.operatorAnswer=='-'&&this.answers[2]==this.problems[0]){
         this.currentLine++;
       }
     }
     else if(this.currentLine==1){
-      if(this.answers[3]=='x'&&this.answers[4]==this.problems[1]-this.problems[0]){
+      if((this.answers[3]=='x'||this.answers[3]=="X")&&this.answers[4]==this.problems[1]-this.problems[0]){
         this.currentLine++;
       }
     }
