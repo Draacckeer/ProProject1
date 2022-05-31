@@ -1,27 +1,30 @@
 import {Route, RouterModule} from "@angular/router";
-import {HomeComponent} from "./home.component";
 import {NgModule} from "@angular/core";
+import {GameComponent} from "./game.component";
 import {NavbarModule} from "../navbar/navbar.module";
 
 
-const homeRoutes: Route[] = [
+const gameRoutes: Route[] = [
   {
     path: '',
-    component: HomeComponent
+    component: GameComponent
   }
 ]
 
 @NgModule({
   declarations: [
-    HomeComponent,
+    GameComponent
+  ],
+  exports: [
+    GameComponent
   ],
   imports: [
-    RouterModule.forChild(homeRoutes),
+    RouterModule.forChild(gameRoutes),
     NavbarModule,
 
   ]
 })
 
-export class HomeModule
+export class GameModule
 {
 }
