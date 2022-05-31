@@ -1,14 +1,12 @@
 <app-navbar></app-navbar>
 <div style="text-align: center">
-  <div>Level 1</div>
+  <div>Level {{currentLevel}}</div>
   <div>x+{{problems[0]}}={{problems[1]}}</div>
   <div class="first-line">
-    <mat-form-field appearance="fill" class="mat-form-field-number">
-      <input matInput autocomplete="off" [(ngModel)]="answers[0]">
-    </mat-form-field>
+    x
     =
     <mat-form-field appearance="fill" class="mat-form-field-number">
-      <input matInput autocomplete="off" type="number" [(ngModel)]="answers[1]">
+      <input matInput autocomplete="off" type="number" [(ngModel)]="answers[0]">
     </mat-form-field>
     <mat-form-field appearance="fill" class="mat-form-field-operator">
       <mat-label>Operator</mat-label>
@@ -19,17 +17,15 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill" class="mat-form-field-number">
-      <input matInput autocomplete="off" type="number" [(ngModel)]="answers[2]">
+      <input matInput autocomplete="off" type="number" [(ngModel)]="answers[1]">
     </mat-form-field>
     <mat-icon *ngIf="currentLine>0" style="color: green">check_circle</mat-icon>
   </div>
   <div class="second-line" *ngIf="currentLine>0">
-    <mat-form-field appearance="fill" class="mat-form-field-number">
-      <input matInput autocomplete="off" [(ngModel)]="answers[3]">
-    </mat-form-field>
+    x
     =
     <mat-form-field appearance="fill" class="mat-form-field-number">
-      <input matInput autocomplete="off" type="number" [(ngModel)]="answers[4]">
+      <input matInput autocomplete="off" type="number" [(ngModel)]="answers[2]">
     </mat-form-field>
     <mat-icon *ngIf="currentLine>1" style="color: green">check_circle</mat-icon>
   </div>
