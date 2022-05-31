@@ -1,25 +1,37 @@
 <app-navbar></app-navbar>
-<div>Level 1</div>
-<div>x+2=5</div>
-<form>
-  <mat-form-field>
-    <input matInput autocomplete="off">
-  </mat-form-field>
-  =
-  <mat-form-field>
-    <input matInput autocomplete="off">
-  </mat-form-field>
-  _
-  <mat-form-field>
-    <input matInput autocomplete="off">
-  </mat-form-field>
-  _
-  <mat-form-field>
-    <input matInput autocomplete="off">
-  </mat-form-field>
-  <br>
-  <mat-form-field>
-    <mat-label>2</mat-label>
-    <input matInput autocomplete="off">
-  </mat-form-field>
-</form>
+<div style="text-align: center">
+  <div>Level 1</div>
+  <div>x+2=5</div>
+  <div class="first-line">
+    <mat-form-field appearance="fill" class="mat-form-field-number">
+      <input matInput autocomplete="off" [(ngModel)]="answers[0]">
+    </mat-form-field>
+    =
+    <mat-form-field appearance="fill" class="mat-form-field-number">
+      <input matInput autocomplete="off" type="number" [(ngModel)]="answers[1]">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="mat-form-field-operator">
+      <mat-label>Operator</mat-label>
+      <mat-select [(value)]="operatorAnswer">
+        <mat-option *ngFor="let operator of operators" [value]="operator">
+          {{operator}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="mat-form-field-number">
+      <input matInput autocomplete="off" type="number" [(ngModel)]="answers[2]">
+    </mat-form-field>
+    <mat-icon *ngIf="currentLine>0" style="color: green">check_circle</mat-icon>
+  </div>
+  <div class="second-line" *ngIf="currentLine>0">
+    <mat-form-field appearance="fill" class="mat-form-field-number">
+      <input matInput autocomplete="off" [(ngModel)]="answers[3]">
+    </mat-form-field>
+    =
+    <mat-form-field appearance="fill" class="mat-form-field-number">
+      <input matInput autocomplete="off" [(ngModel)]="answers[4]">
+    </mat-form-field>
+    <mat-icon *ngIf="currentLine>1" style="color: green">check_circle</mat-icon>
+  </div>
+  <button mat-raised-button color="primary" (click)="submitAnswer()">Submit</button>
+</div>
