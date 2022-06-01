@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div style="text-align: center">
   <div>Level {{currentLevel}}</div>
-  <div>x+{{problems[0]}}={{problems[1]}}</div>
+  <div>x{{operatorProblem}}{{problems[0]}}={{problems[1]}}</div>
   <div class="first-line">
     x
     =
@@ -32,6 +32,8 @@
   <button mat-raised-button color="primary" (click)="submitAnswer()">Submit</button>
   <br>
   <br>
+  <button mat-raised-button color="accent" style="margin-right: 10px" (click)="previousLevel()">Previous Level</button>
+  <button mat-raised-button color="accent" (click)="nextLevel()">Next Level</button>
   <br>
   <br>
   <button mat-raised-button color="warn" (click)="setupVariables()">Reset</button>
