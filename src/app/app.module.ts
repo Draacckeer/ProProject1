@@ -10,7 +10,7 @@ import {appRoutes} from "./app-routing.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

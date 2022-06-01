@@ -17,13 +17,6 @@ class Level{
 
 }
 
-enum OperatorOpposite{
-  '+'='-',
-  '-'='+',
-  '*'='/',
-  '/'='*'
-}
-
 @Component({
   selector: 'app-game',
   templateUrl: 'game.component.html',
@@ -31,6 +24,7 @@ enum OperatorOpposite{
 })
 
 export class GameComponent{
+
   operators: string[] = ["+", "-", "*", "÷"];
   currentLevel = 0;
   currentLine = 0;
