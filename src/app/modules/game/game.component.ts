@@ -38,6 +38,9 @@ export class GameComponent{
   operators: string[] = ["+", "-", "*", "÷"];
   currentLevel = 0;
   currentLine = 0;
+  currentLevelPhase = 0;
+  totalLevelPhases = 3;
+  totalLevelPhasesBoxes: number[]=[];
   levels: Level[] = [];
 
   problems: number[] = [];
@@ -70,6 +73,7 @@ export class GameComponent{
     this.answers = [];
     this.currentLine = 0;
     this.operatorAnswer = "";
+    this.totalLevelPhasesBoxes=Array(this.totalLevelPhases).fill(0);
 
     this.operatorProblem=this.CurrentLevel().operator;
 
@@ -102,6 +106,15 @@ export class GameComponent{
       if(this.answers[2]==this.CalculateByOperator(this.problems[1], this.problems[0],
         this.OperatorOpposite(this.CurrentLevel().operator))){
         this.currentLine++;
+        if(this.currentLevelPhase<this.totalLevelPhases-1){
+          this.currentLevelPhase++;
+          this.setupVariables();
+        }
+        else{
+          this.currentLevelPhase++;
+          this.nextLevel();
+          this.currentLevelPhase = 0;
+        }
       }
     }
   }

@@ -7,3 +7,23 @@
   width: 95px;
   margin: 5px;
 }
+
+.mat-grid-tile{
+  background: lightgreen;
+}
+
+th{
+  padding: 20px;
+  border-radius: 10px;
+}
+th.checked{
+  background-color: lightgreen;
+}
+
+th {
+  border: 1px solid black;
+}
+table {
+  border-spacing: 10px;
+  margin: 0 auto;
+}

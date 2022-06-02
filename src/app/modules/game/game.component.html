@@ -1,10 +1,9 @@
 <app-navbar></app-navbar>
-<div style="text-align: center">
+<div style="text-align: center;">
   <div>Level {{currentLevel+1}}</div>
   <div>x{{operatorProblem}}{{problems[0]}}={{problems[1]}}</div>
   <div class="first-line">
-    x
-    =
+    x =
     <mat-form-field appearance="fill" class="mat-form-field-number">
       <input matInput autocomplete="off" type="number" [(ngModel)]="answers[0]">
     </mat-form-field>
@@ -22,14 +21,23 @@
     <mat-icon *ngIf="currentLine>0" style="color: green">check_circle</mat-icon>
   </div>
   <div class="second-line" *ngIf="currentLine>0">
-    x
-    =
+    x =
     <mat-form-field appearance="fill" class="mat-form-field-number">
       <input matInput autocomplete="off" type="number" [(ngModel)]="answers[2]">
     </mat-form-field>
     <mat-icon *ngIf="currentLine>1" style="color: green">check_circle</mat-icon>
   </div>
   <button mat-raised-button color="primary" (click)="submitAnswer()">Submit</button>
+  <br>
+  <br>
+  <div>Actual Progress: ({{currentLevelPhase}}/{{totalLevelPhases}})</div>
+  <br>
+  <table>
+    <tr>
+      <th [class]="currentLevelPhase>i?'checked':'unchecked'"
+          *ngFor="let number of totalLevelPhasesBoxes; index as i">{{i}}</th>
+    </tr>
+  </table>
   <br>
   <br>
   <button mat-raised-button color="accent" style="margin-right: 10px" (click)="previousLevel()">Previous Level</button>
