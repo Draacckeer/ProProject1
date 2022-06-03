@@ -1,4 +1,6 @@
 import {Component} from "@angular/core";
+import {MatDialog} from "@angular/material/dialog";
+import {GameLevelCompletedDialogComponent} from "./game-level-completed-dialog/game-level-completed-dialog.component";
 
 enum LevelType{
   RandomMinMax,
@@ -34,7 +36,10 @@ class Level{
 })
 
 export class GameComponent{
+  alert1 = false;
+  alert2 = false;
 
+  maxLevel = 0;
 
   operators: string[] = ["+", "-", "*", "÷"];
   currentLevel = 0;
@@ -50,7 +55,10 @@ export class GameComponent{
   answers: any = [];
   operatorAnswer: string = "";
 
-  constructor() {
+  constructor(
+    private dialog: MatDialog,
+  ) {
+    this.maxLevel=Number(localStorage.getItem("maxLevel"));
     this.setupLevels();
     this.setupVariables();
   }
@@ -107,6 +115,12 @@ export class GameComponent{
         this.OperatorOpposite(this.CurrentLevel().operator)&&this.answers[1]==this.problems[0]){
         this.currentLine++;
       }
+      else{
+        this.alert1=true;
+        setTimeout(() => {
+          this.alert1=false;
+        }, 500);
+      }
     }
     else if(this.currentLine==1){
       if(this.answers[2]==this.CalculateByOperator(this.problems[1], this.problems[0],
@@ -118,16 +132,44 @@ export class GameComponent{
         }
         else{
           this.currentLevelPhase++;
-          this.nextLevel();
-          this.currentLevelPhase = 0;
+          this.LevelCompleted();
         }
       }
+      else{
+        this.alert2=true;
+        setTimeout(() => {
+          this.alert2=false;
+        }, 500);
+      }
     }
+  }
+
+  LevelCompleted(){
+    this.maxLevel=this.currentLevel+1;
+    localStorage.setItem("maxLevel",String(this.maxLevel));
+    this.openLevelCompletedDialog();
   }
 
   RandomNumberMinMax(min: number, max: number){
     return Math.floor(Math.random() *
         (max - min + 1)) + min;
+  }
+
+  openLevelCompletedDialog(){
+    const dialogRef =this.dialog.open(GameLevelCompletedDialogComponent,{
+      data: this.currentLevel
+    })
+
+    dialogRef.afterClosed().subscribe((result) =>{
+      if(result==true){
+        this.nextLevel();
+      }
+    })
+  }
+
+  Reset(){
+    this.setupVariables();
+    this.currentLevelPhase=0;
   }
 
   CurrentLevel(): Level{
@@ -138,12 +180,14 @@ export class GameComponent{
     if(!this.levels[this.currentLevel-1]) return;
     this.currentLevel--;
     this.setupVariables();
+    this.currentLevelPhase = 0;
   }
 
   nextLevel(){
     if(!this.levels[this.currentLevel+1]) return;
     this.currentLevel++;
     this.setupVariables();
+    this.currentLevelPhase = 0;
   }
 
   OperatorOpposite(operator: string): string{

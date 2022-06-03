@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Level Completed</h1>
+<div mat-dialog-content>
+  <p>Level {{data+1}} Completed</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Close</button>
+  <button mat-raised-button color="accent" [mat-dialog-close]="true" cdkFocusInitial>Next Level</button>
+</div>

@@ -10,6 +10,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {FormsModule} from "@angular/forms";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {GameLevelCompletedDialogComponent} from "./game-level-completed-dialog/game-level-completed-dialog.component";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 const gameRoutes: Route[] = [
@@ -21,7 +23,8 @@ const gameRoutes: Route[] = [
 
 @NgModule({
   declarations: [
-    GameComponent
+    GameComponent,
+    GameLevelCompletedDialogComponent,
   ],
   exports: [
     GameComponent
@@ -36,7 +39,10 @@ const gameRoutes: Route[] = [
     MatButtonModule,
     MatIconModule,
     FormsModule,
-
+    MatDialogModule,
+  ],
+  entryComponents: [
+    GameLevelCompletedDialogComponent,
   ]
 })
 

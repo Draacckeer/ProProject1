@@ -20,6 +20,10 @@
     </mat-form-field>
     <mat-icon *ngIf="currentLine>0" style="color: green">check_circle</mat-icon>
     <button mat-raised-button color="primary" (click)="submitAnswer()">Submit</button>
+    <div *ngIf="alert1" style="color: red">Check again!</div>
+    <div *ngIf="!alert1">
+      <br>
+    </div>
   </div>
   <div class="second-line">
     x =
@@ -28,6 +32,10 @@
     </mat-form-field>
     <mat-icon *ngIf="currentLine>1" style="color: green">check_circle</mat-icon>
     <button mat-raised-button color="primary" [disabled]="currentLine<=0" (click)="submitAnswer()">Submit</button>
+    <div *ngIf="alert2" style="color: red">Check again!</div>
+    <div *ngIf="!alert2">
+      <br>
+    </div>
   </div>
   <br>
   <br>
@@ -41,9 +49,9 @@
   </table>
   <br>
   <br>
-  <button mat-raised-button color="accent" style="margin-right: 10px" (click)="previousLevel()">Previous Level</button>
-  <button mat-raised-button color="accent" (click)="nextLevel()">Next Level</button>
+  <button mat-raised-button color="accent" [disabled]="currentLevel<=0" style="margin-right: 10px" (click)="previousLevel()">Previous Level</button>
+  <button mat-raised-button color="accent" [disabled]="maxLevel<=currentLevel" (click)="nextLevel()">Next Level</button>
   <br>
   <br>
-  <button mat-raised-button color="warn" (click)="setupVariables()">Reset</button>
+  <button mat-raised-button color="warn" (click)="Reset()">Reset</button>
 </div>
