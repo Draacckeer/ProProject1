@@ -5,37 +5,38 @@
   <div class="first-line">
     x =
     <mat-form-field appearance="fill" class="mat-form-field-number">
-      <input matInput autocomplete="off" type="number" [(ngModel)]="answers[0]">
+      <input autofocus id="answer0" (ngModelChange)="changeAnswer(1)" matInput autocomplete="off" type="number" [(ngModel)]="answers[0]">
     </mat-form-field>
     <mat-form-field appearance="fill" class="mat-form-field-operator">
       <mat-label>Operator</mat-label>
-      <mat-select [(value)]="operatorAnswer">
+      <mat-select id="answer1" (selectionChange)="changeAnswer(2)" [(value)]="operatorAnswer">
         <mat-option *ngFor="let operator of operators" [value]="operator">
           {{operator}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill" class="mat-form-field-number">
-      <input matInput autocomplete="off" type="number" [(ngModel)]="answers[1]">
+      <input id="answer2" matInput autocomplete="off" type="number" [(ngModel)]="answers[1]">
     </mat-form-field>
     <mat-icon *ngIf="currentLine>0" style="color: green">check_circle</mat-icon>
+    <button mat-raised-button color="primary" (click)="submitAnswer()">Submit</button>
   </div>
-  <div class="second-line" *ngIf="currentLine>0">
+  <div class="second-line">
     x =
     <mat-form-field appearance="fill" class="mat-form-field-number">
-      <input matInput autocomplete="off" type="number" [(ngModel)]="answers[2]">
+      <input id="answer3" [disabled]="currentLine<=0" matInput autocomplete="off" type="number" [(ngModel)]="answers[2]">
     </mat-form-field>
     <mat-icon *ngIf="currentLine>1" style="color: green">check_circle</mat-icon>
+    <button mat-raised-button color="primary" [disabled]="currentLine<=0" (click)="submitAnswer()">Submit</button>
   </div>
-  <button mat-raised-button color="primary" (click)="submitAnswer()">Submit</button>
   <br>
   <br>
-  <div>Actual Progress: ({{currentLevelPhase}}/{{totalLevelPhases}})</div>
+  <div>Progress: ({{currentLevelPhase}}/{{totalLevelPhases}})</div>
   <br>
   <table>
     <tr>
       <th [class]="currentLevelPhase>i?'checked':'unchecked'"
-          *ngFor="let number of totalLevelPhasesBoxes; index as i">{{i}}</th>
+          *ngFor="let number of totalLevelPhasesBoxes; index as i">{{i+1}}</th>
     </tr>
   </table>
   <br>

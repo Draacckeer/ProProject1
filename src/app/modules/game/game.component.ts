@@ -35,6 +35,7 @@ class Level{
 
 export class GameComponent{
 
+
   operators: string[] = ["+", "-", "*", "÷"];
   currentLevel = 0;
   currentLine = 0;
@@ -50,7 +51,6 @@ export class GameComponent{
   operatorAnswer: string = "";
 
   constructor() {
-
     this.setupLevels();
     this.setupVariables();
   }
@@ -68,7 +68,13 @@ export class GameComponent{
     this.levels.push(new Level(LevelType.RandomMinMax, "÷", 2, 5, 2, 5));
   }
 
+  changeAnswer(id: number){
+    document.getElementById(`answer${id}`)?.focus();
+  }
+
   setupVariables(){
+    document.getElementById("answer0")?.focus();
+
     this.problems = [];
     this.answers = [];
     this.currentLine = 0;
