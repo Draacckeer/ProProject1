@@ -28,7 +28,7 @@
   <div class="second-line">
     x =
     <mat-form-field appearance="fill" class="mat-form-field-number">
-      <input id="answer3" [disabled]="currentLine<=0?true:changeAnswerFocus(3)&&false" matInput autocomplete="off" type="number" [(ngModel)]="answers[2]">
+      <input id="answer3" [disabled]="currentLine<=0" matInput autocomplete="off" type="number" [(ngModel)]="answers[2]">
     </mat-form-field>
     <mat-icon *ngIf="currentLine>1" style="color: green">check_circle</mat-icon>
     <button mat-raised-button color="primary" [disabled]="currentLine<=0" (click)="submitAnswer()">Submit</button>
