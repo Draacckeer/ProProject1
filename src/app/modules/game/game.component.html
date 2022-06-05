@@ -5,11 +5,11 @@
   <div class="first-line">
     x =
     <mat-form-field appearance="fill" class="mat-form-field-number">
-      <input autofocus id="answer0" (ngModelChange)="changeAnswer(1)" matInput autocomplete="off" type="number" [(ngModel)]="answers[0]">
+      <input autofocus id="answer0" (ngModelChange)="changeAnswerFocus(1)" matInput autocomplete="off" type="number" [(ngModel)]="answers[0]">
     </mat-form-field>
     <mat-form-field appearance="fill" class="mat-form-field-operator">
       <mat-label>Operator</mat-label>
-      <mat-select id="answer1" (selectionChange)="changeAnswer(2)" [(value)]="operatorAnswer">
+      <mat-select id="answer1" (closed)="changeAnswerFocus(2)" [(value)]="operatorAnswer">
         <mat-option *ngFor="let operator of operators" [value]="operator">
           {{operator}}
         </mat-option>
@@ -28,7 +28,7 @@
   <div class="second-line">
     x =
     <mat-form-field appearance="fill" class="mat-form-field-number">
-      <input id="answer3" [disabled]="currentLine<=0" matInput autocomplete="off" type="number" [(ngModel)]="answers[2]">
+      <input id="answer3" [disabled]="currentLine<=0?true:changeAnswerFocus(3)&&false" matInput autocomplete="off" type="number" [(ngModel)]="answers[2]">
     </mat-form-field>
     <mat-icon *ngIf="currentLine>1" style="color: green">check_circle</mat-icon>
     <button mat-raised-button color="primary" [disabled]="currentLine<=0" (click)="submitAnswer()">Submit</button>

@@ -76,8 +76,9 @@ export class GameComponent{
     this.levels.push(new Level(LevelType.RandomMinMax, "÷", 2, 5, 2, 5));
   }
 
-  changeAnswer(id: number){
+  changeAnswerFocus(id: number){
     document.getElementById(`answer${id}`)?.focus();
+    return true;
   }
 
   setupVariables(){
