@@ -8,23 +8,25 @@
   margin: 5px;
 }
 
-.mat-grid-tile{
-  background: lightgreen;
-}
 
-th{
-  width: 20px;
-  padding: 20px;
-  border-radius: 10px;
-}
-th.checked{
-  background-color: lightgreen;
-}
-
-th {
-  border: 1px solid black;
-}
-table {
-  border-spacing: 10px;
+.boxes-level-mat-grid-list{
   margin: 0 auto;
 }
+
+.boxes-level-mat-grid-tile-checked{
+  border: 2px solid #5FD068;
+  background: #5FD068;
+  color: #F6FBF4;
+}
+
+.boxes-level-mat-grid-tile-unchecked{
+  border: 2px solid #5FD068;
+  background: #F6FBF4;
+  color: #4B8673;
+}
+
+.boxes-level-container{
+  width: 200px;
+  margin: 0 auto;
+}
+

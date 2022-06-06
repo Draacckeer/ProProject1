@@ -12,6 +12,7 @@ import {FormsModule} from "@angular/forms";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {GameLevelCompletedDialogComponent} from "./game-level-completed-dialog/game-level-completed-dialog.component";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 
 const gameRoutes: Route[] = [
@@ -40,6 +41,7 @@ const gameRoutes: Route[] = [
     MatIconModule,
     FormsModule,
     MatDialogModule,
+    MatGridListModule,
   ],
   entryComponents: [
     GameLevelCompletedDialogComponent,

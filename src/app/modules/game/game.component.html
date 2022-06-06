@@ -41,12 +41,15 @@
   <br>
   <div>Progress: ({{currentLevelPhase}}/{{totalLevelPhases}})</div>
   <br>
-  <table>
-    <tr>
-      <th [class]="currentLevelPhase>i?'checked':'unchecked'"
-          *ngFor="let number of totalLevelPhasesBoxes; index as i">{{i+1}}</th>
-    </tr>
-  </table>
+  <div class="boxes-level-container">
+    <mat-grid-list class="boxes-level-mat-grid-list" cols="3" rowHeight="50px" gutterSize="15px">
+      <mat-grid-tile [class]="currentLevelPhase>i?'boxes-level-mat-grid-tile-checked':'boxes-level-mat-grid-tile-unchecked'"
+                     colspan="1" *ngFor="let number of totalLevelPhasesBoxes; index as i">
+        {{i+1}}
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
   <br>
   <br>
   <button mat-raised-button color="accent" [disabled]="currentLevel<=0" style="margin-right: 10px" (click)="previousLevel()">Previous Level</button>
